@@ -1,0 +1,19 @@
+<div class="col-md-3">
+  <h3 class="mb-5 mt-3">会員詳細</h3>
+    <%= image_tag customer.get_profile_image(150,150), class: "rounded-circle d-block mx-auto mb-5" %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>名前</th>
+            <th><%= customer.full_name %></th>
+          </tr>
+          <tr>
+            <th>カナ</th>
+            <th><%= customer.full_name_kana %></th>
+          </tr>
+        </tbody>
+      </table>
+　　  <div class="row">
+        <%= link_to "プロフィールを編集", edit_customer_path(customer.id), class: "btn btn-outline-secondary btn-block" %>
+      </div>
+ </div>

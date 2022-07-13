@@ -1,0 +1,24 @@
+<h3>投稿編集</h3>
+
+<%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+
+  <div class="field">
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <h4>写真</h4>
+    <%= f.file_field :images, multiple: true, accept: "image/*" %>
+  </div>
+
+  <div class="field">
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  </div>
+
+  <%= f.submit '編集内容を保存' %>
+
+  <%= link_to "詳細画面に戻る", post_path(@post.id), class: "btn btn-sm btn-success" %>
+
+<% end %>

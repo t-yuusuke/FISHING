@@ -1,0 +1,19 @@
+<%= render 'public/posts/list',customer: @customer %>
+<h4>投稿一覧</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>投稿詳細文</th>
+      </tr>
+    </thead>
+      <% @posts.each do |post| %>
+    <tbody>
+      <tr>
+        <td><%= image_tag post.customer.get_profile_image(100,100), class: "rounded-circle" %></td>
+        <td><%= link_to post.title, post_path(post.id) %></td>
+        <td><%= post.body %></td>
+      <% end %>
+      </tr>
+    </tbody>
+  </table>

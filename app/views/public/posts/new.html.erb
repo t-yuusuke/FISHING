@@ -1,0 +1,21 @@
+<h3>新規投稿</h3>
+
+<%= form_with model: Post.new do |f| %>
+
+  <div class="field">
+  <h6>タイトル</h6>
+  <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+  <h6>写真</h6>
+  <%= f.file_field :images, multiple: true, accept: "image/*" %>
+  </div>
+
+  <div class="field">
+  <h6>本文</h6>
+  <%= f.text_area :body %>
+  </div>
+
+  <%= f.submit '投稿' %>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="container px-5 px-sm-0">
+
+  <div class="row">
+
+
+
+<%= render 'public/posts/list',customer: @customer %>
+<div class="col-md-8 offset-md-1">
+<h3 class="mt-3">会員一覧</h3>
+  <table class="table">
+  <% @customers.each do |customer| %>
+    <tbody>
+      <tr>
+        <td><%= image_tag customer.get_profile_image(100,100), class: "rounded-circle" %></td>
+        <td><%= customer.full_name %></td>
+        <td><%= link_to "会員の詳細", customer_path(customer.id) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>

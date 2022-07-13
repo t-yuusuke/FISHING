@@ -1,0 +1,48 @@
+<h2>Sign up</h2>
+
+<%= form_with model: @customer, url: customer_registration_path do |f| %>
+
+  <%= render "public/shared/error_messages", resource: resource %>
+
+
+
+  <div class="form-inline">
+    <h4>名前</h4>
+    <%= f.label :last_name,"（姓）" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    <%= f.label :first_name,"（名）" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+     <%= f.label :フリガナ %>
+    <%= f.label :last_name_kana,"（セイ）" %>
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+    <%= f.label :first_name_kana,"（メイ）" %>
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email,"メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "public/shared/links" %>

@@ -1,0 +1,33 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/" style="font-family: cursive;">
+      <span>FISHING</span>
+    </a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="navbar-collapse collpse show" id="navbarNavDropdown" style>
+          <ul class="navbar-nav ml-auto">
+
+
+    <% if customer_signed_in? %>
+      <li class="nav-item"><%= link_to "投稿", new_post_path, class: 'btn btn-danger rounded-pill mx-3 my-1' %></li>
+      <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer), class: 'btn btn-danger rounded-pill mx-3 my-1' %></li>
+      <li class="nav-item"><%= link_to "会員一覧", customers_path, class: 'btn btn-danger rounded-pill mx-3 my-1' %></li>
+      <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'btn btn-danger rounded-pill mx-3 my-1' %></li>
+      <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-danger rounded-pill mx-3 my-1' %></li>
+
+    <% elsif admin_signed_in? %>
+
+
+    <% else %>
+      <li class="nav-item"><%= link_to "Top", root_path, class: 'btn btn-light mx-3 my-1' %></li>
+      <li class="nav-item"><%= link_to "About", about_path, class: 'btn btn-light mx-3 my-1' %></li>
+      <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-light mx-3 my-1' %></li>
+      <li class="nav-item"><%= link_to "ログイン", new_customer_session_path , class: 'btn btn-light mx-3 my-1' %></li>
+    <% end %>
+
+        </ul>
+      </div>
+  </nav>
+</header>
