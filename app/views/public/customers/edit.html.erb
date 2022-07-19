@@ -1,29 +1,32 @@
-<h3>プロフィール編集</h3>
-<%= form_with model: @customer, url: customer_path do |f| %>
-  <div>
-    <%= f.label :last_name,"氏名",class: "col-md-2 mt-4" %>
-    <%= f.text_field :last_name,class: "form-control-sm mr-5" %>
-    <%= f.text_field :first_name,class: "form-control-sm" %>
-  </div>
-  <div>
-    <%= f.label :last_name_kana,"フリガナ",class: "col-md-2" %>
-    <%= f.text_field :last_name_kana,class: "form-control-sm mr-5 mt-3" %>
-    <%= f.text_field :first_name_kana,class: "form-control-sm" %>
-  </div>
-  <div>
-    <%= f.label :email,"メールアドレス",class: "col-md-2" %>
-    <%= f.text_field :email,class: "form-control-sm mt-3" %>
-  </div>
-
-  <div>
-    <%= f.label :image,"写真",class: "col-md-2" %>
-    <%= f.file_field :profile_image,class: "form-control-sm mt-3", accept: "image/*" %>
-  </div>
-
-  <div>
-    <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
-    <%= link_to "退会する", customer_path(current_customer.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger" %>
-  </div>
-
-
-<% end %>
+<div class="container mt-5 ">
+  <div class="row">
+    <div class="col-10 offset-1 text-center border border-secondary bg-light shadow-lg p-3 rounded">
+      <h5>プロフィール編集</h5>
+      <%= render 'layouts/errors', obj: @customer %>
+      <%= form_with model: @customer, url: customer_path do |f| %>
+      <div class="form-group mt-4 col-4 offset-4">
+        <%= f.text_field :last_name, :placeholder => "姓", autofocus: true, class: "form-control form-control-sm" %>
+      </div>
+      <div class="form-group mt-4 col-4 offset-4">
+        <%= f.text_field :first_name, :placeholder => "名", autofocus: true, class: "form-control form-control-sm" %>
+      </div>
+      <div class="form-group mt-4 col-4 offset-4">
+        <%= f.text_field :last_name_kana, :placeholder => "セイ", autofocus: true, class: "form-control form-control-sm" %>
+      </div>
+      <div class="form-group mt-4 col-4 offset-4">
+        <%= f.text_field :first_name_kana, :placeholder => "メイ", autofocus: true, class: "form-control form-control-sm" %>
+      </div>
+      <div class="form-group mt-4 col-4 offset-4">
+        <%= f.text_field :email, :placeholder => "メールアドレス", autofocus: true, class: "form-control form-control-sm" %>
+      </div>
+      <div>
+        <%= f.file_field :profile_image, accept: "image/*", class: "mt-2" %>
+      </div>
+      <div>
+        <%= f.submit "変更を保存", class: "mt-4 btn btn-sm btn-secondary mr-4" %>
+        <%= link_to "退会する", customer_path(current_customer.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "mt-4 btn btn-sm btn-secondary ml-4" %>
+      </div>
+      <% end %>
+    </div>
+　</div>
+</div>

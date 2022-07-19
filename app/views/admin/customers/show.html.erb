@@ -1,0 +1,28 @@
+<div class="cotainer">
+  <div class="row">
+    <div class="col-md-3 offset-1">
+
+    <h4 class="mt-3 mb-4 text-center"><%= @customer.full_name %>さんの会員詳細</h4>
+      <table class="table table-bordered align-items-center justify-content-center">
+        <tr>
+          <th>会員ID</th>
+          <th><%= @customer.id %></th>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <th><%= @customer.full_name %></th>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <th><%= @customer.full_name_kana %></th>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <th><%= @customer.email %></th>
+        </tr>
+      </table>
+      <%= link_to "退会", admin_customer_path(@customer.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger rounded-pill" %>
+
+    </div>
+  </div>
+</div>

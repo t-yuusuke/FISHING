@@ -1,0 +1,17 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+　　<div class="col-md-8 offset-md-1">
+　　<h3 class="mt-3 mb-4 text-center"><%= @post.customer.full_name %>さんの会員詳細</h3>
+　　<p><%= @post.title %><p>
+  <% if @post.images.attached? %>
+    <% @post.images.each do |image| %>
+      <%= image_tag image.variant(resize_to_limit: [300, 300]) %>
+    <% end %>
+  <% end %>
+
+<p><%= @post.body %></p>
+<%= link_to "投稿削除", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger rounded-pill" %>
+
+　　</div>
+　</div>
+</div>

@@ -3,10 +3,56 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  # 名前が空でないことを確認している
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  # メールアドレスが空でないことを確認している
+  validates :email, presence: true
 
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+
+  # フォローをしたときの処理
+  def follow(customer_id)
+    relationships.create(followed_id: customer_id)
+  end
+  # フォローを外すしたときの処理
+  def unfollow(customer_id)
+    relationships.find_by(followed_id: customer_id).destroy
+  end
+  # フォローしているか判断する
+  def following?(customer)
+    followings.include?(customer)
+  end
+
+  # 検索方向分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @customer = Customer.where("last_name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @customer = Customer.where("last_name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @customer = Customer.where("full_name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @customer = Customer.where("full_name LIKE?","%#{word}%")
+    else
+      @customer = Customer.all
+    end
+  end
 
   def full_name
     self.last_name+""+self.first_name
