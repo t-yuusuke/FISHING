@@ -1,14 +1,19 @@
-<h3 class="text-center">通知</h3>
-<%= link_to destroy_all_path, method: :delete do %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-5 border border-secondary shadow-lg p-3 rounded" style="background-color:#D0C1C2;">
+        <h3 class="text-center">通知</h3>
+        <%= link_to destroy_all_path, method: :delete do %>
         <i class="fas fa-trash" style="color: black;"></i>
         <h7 style="color: black;">通知全削除</h7>
-    <% end %>
-    <hr>
-
-<% if @notifications.exists? %>
-    <div class="users-index">
-        <%= render @notifications %>
+        <% end %>
+        <hr>
+        <% if @notifications.exists? %>
+          <div class="users-index">
+            <%= render @notifications %>
+        　</div>
+　　　　<% else %>
+    　　　<p>通知はありません</p>
+　　　　<% end %>
     </div>
-<% else %>
-    <p>通知はありません</p>
-<% end %>
+  </div>
+</div>

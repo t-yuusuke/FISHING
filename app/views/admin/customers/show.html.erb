@@ -1,8 +1,7 @@
-<div class="cotainer">
+<div class="container">
   <div class="row">
-    <div class="col-md-3 offset-1">
-
-    <h4 class="mt-3 mb-4 text-center"><%= @customer.full_name %>さんの会員詳細</h4>
+    <div class="col-md-8 offset-md-2 mt-5 border border-secondary shadow-lg p-3 rounded" style="background-color:#D0C1C2;">
+      <h4 class="mt-3 mb-4 text-center"><%= @customer.full_name %>さんの会員詳細</h4>
       <table class="table table-bordered align-items-center justify-content-center">
         <tr>
           <th>会員ID</th>
@@ -13,7 +12,7 @@
           <th><%= @customer.full_name %></th>
         </tr>
         <tr>
-          <th>カナ</th>
+          <th>フリガナ</th>
           <th><%= @customer.full_name_kana %></th>
         </tr>
         <tr>
@@ -21,8 +20,10 @@
           <th><%= @customer.email %></th>
         </tr>
       </table>
-      <%= link_to "退会", admin_customer_path(@customer.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger rounded-pill" %>
-
+      　<div>
+          <%= link_to "退会", admin_customer_path(@customer.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-info rounded-pill" %>
+　　　　　<%= link_to "会員一覧に戻る", admin_customers_path, class: "btn btn-sm btn-info rounded-pill" %>
+      　</div>
     </div>
   </div>
 </div>

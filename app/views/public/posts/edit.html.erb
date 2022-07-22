@@ -1,6 +1,6 @@
 <div class="container mt-5 ">
   <div class="row">
-    <div class="col-10 offset-1 text-center border border-secondary bg-light shadow-lg p-3 rounded">
+    <div class="col-10 offset-1 text-center border border-secondary shadow-lg p-3 rounded" style="background-color:#D0C1C2;">
       <h5>投稿編集</h5>
       <%= render 'layouts/errors', obj: @post %>
       <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
@@ -14,8 +14,8 @@
         <%= f.text_area :body, :placeholder => "投稿内容", class: "form-control form-control-lg" %>
       </div>
       <div>
-        <%= f.submit '編集内容を保存', class: "mt-4 btn btn-sm btn-secondary mr-4" %>
-        <%= link_to "詳細画面に戻る", post_path(@post.id), class: "mt-4 btn btn-sm btn-secondary ml-4" %>
+        <%= f.submit '編集内容を保存', class: "mt-4 btn btn-sm btn-info mr-4" %>
+        <%= link_to "詳細画面に戻る", post_path(@post.id), class: "mt-4 btn btn-sm btn-info ml-4" %>
       </div>
       <% end %>
     </div>

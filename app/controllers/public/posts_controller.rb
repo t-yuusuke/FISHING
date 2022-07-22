@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(4)
     @customer = Customer.find(current_customer[:id])
   end
 
@@ -26,9 +26,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      flash[:success] = "投稿しました。"
+      flash[:info] = "投稿しました"
       redirect_to post_path(@post.id)
     else
+      flash[:denger] = "投稿できません。"
       render "new"
     end
   end
@@ -36,6 +37,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      flash[:info] = "編集しました。"
       redirect_to post_path(@post.id)
     else
       render "edit"

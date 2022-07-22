@@ -1,6 +1,6 @@
 <div class="container mt-5 ">
   <div class="row">
-    <div class="col-10 offset-1 text-center border border-secondary bg-light shadow-lg p-3 rounded">
+    <div class="col-10 offset-1 text-center border border-secondary shadow-lg p-3 rounded" style="background-color:#D0C1C2;">
       <h5>プロフィール編集</h5>
       <%= render 'layouts/errors', obj: @customer %>
       <%= form_with model: @customer, url: customer_path do |f| %>
@@ -23,8 +23,8 @@
         <%= f.file_field :profile_image, accept: "image/*", class: "mt-2" %>
       </div>
       <div>
-        <%= f.submit "変更を保存", class: "mt-4 btn btn-sm btn-secondary mr-4" %>
-        <%= link_to "退会する", customer_path(current_customer.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "mt-4 btn btn-sm btn-secondary ml-4" %>
+        <%= f.submit "変更を保存", class: "mt-4 btn btn-sm btn-info mr-4" %>
+        <%= link_to "退会する", customer_path(current_customer.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "mt-4 btn btn-sm btn-info ml-4" %>
       </div>
       <% end %>
     </div>

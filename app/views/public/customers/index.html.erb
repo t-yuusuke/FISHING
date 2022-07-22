@@ -1,32 +1,29 @@
 <div class="container px-5 px-sm-0">
-
   <div class="row">
-
-
-
-<%= render 'public/posts/list',customer: @customer %>
-<div class="col-md-8 offset-md-1">
-<h3>会員一覧</h3>
-  <table class="table">
-  <% @customers.each do |customer| %>
-    <tbody>
-      <tr>
-        <td><%= image_tag customer.get_profile_image(100,100), class: "rounded-circle" %></td>
-        <td><%= customer.full_name %></td>
-        <td>フォロー数: <%= customer.followings.count %></td>
-        <td>フォロワー数: <%= customer.followers.count %></td>
-        <td>
-          <% if current_customer.following?(customer) %>
-          <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: 'btn btn-outline-secondary rounded-pill' %>
-          <% else %>
-          <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class: 'btn btn-outline-secondary rounded-pill' %>
-          <% end %>
-        </td>
-        <td><%= link_to "会員の詳細", customer_path(customer.id), class: 'btn btn-outline-secondary rounded-pill btn-block' %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-</div>
+    <%= render 'public/posts/list',customer: @customer %>
+    <div class="col-md-8 offset-md-1 mt-5">
+      <h3>会員一覧</h3>
+      <table class="table table-hover shadow-lg p-3" style="background-color:#D0C1C2;">
+        <% @customers.each do |customer| %>
+        <tbody>
+          <tr>
+            <td><%= image_tag customer.get_profile_image(100,100), class: "rounded-circle" %></td>
+            <td><%= customer.full_name %></td>
+            <td>フォロー数: <%= customer.followings.count %></td>
+            <td>フォロワー数: <%= customer.followers.count %></td>
+            <td>
+              <% if current_customer.following?(customer) %>
+                <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: 'btn btn-outline-light rounded-pill' %>
+              <% else %>
+                <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class: 'btn btn-outline-light rounded-pill' %>
+              <% end %>
+            </td>
+            <td><%= link_to "会員の詳細", customer_path(customer.id), class: 'btn btn-outline-light rounded-pill btn-block' %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+       <div><%= paginate @customers %></div>
+    </div>
+  </div>
 </div>

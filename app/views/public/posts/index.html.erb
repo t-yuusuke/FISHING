@@ -1,31 +1,27 @@
 <div class="container px-5 px-sm-0">
-
   <div class="row">
-
-
-<%= render 'public/posts/list',customer: @customer %>
-<div class="col-md-8 offset-md-1">
-<h3>投稿一覧</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>タイトル</th>
-        <th>投稿詳細文</th>
-      </tr>
-    </thead>
-      <% @posts.each do |post| %>
-    <tbody>
-      <tr>
-        <td><%= image_tag post.customer.get_profile_image(100,100), class: "rounded-circle" %></td>
-        <td><%= link_to post.title, post_path(post.id) %></td>
-        <td><%= post.body %></td>
-        <td>コメント件数：<%= post.comments.count %></td>
-      <% end %>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-</div>
+    <%= render 'public/posts/list',customer: @customer %>
+    <div class="col-md-8 offset-md-1 mt-5">
+      <h3>投稿一覧</h3>
+      <table class="table table-hover shadow-lg p-3" style="background-color:#D0C1C2;">
+        <thead>
+          <tr>
+            <th></th>
+            <th>タイトル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @posts.each do |post| %>
+        <tbody>
+          <tr>
+            <td><%= image_tag post.customer.get_profile_image(100,100), class: "rounded-circle" %></td>
+            <td><%= link_to post.title, post_path(post.id) %></td>
+            <td>コメント件数：<%= post.comments.count %></td>
+        <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div><%= paginate @posts %></div>
+    </div>
+  </div>
 </div>

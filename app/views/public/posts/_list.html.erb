@@ -1,4 +1,4 @@
-<div class="col-md-3" style="background-color:#D0C1C2;">
+<div class="list col-md-3 mt-5 shadow-lg p-3" style="background-color:#D0C1C2;">
   <h4 class="mb-4 text-center">会員詳細</h4>
     <%= image_tag customer.get_profile_image(150,150), class: "rounded-circle d-block mx-auto mb-5" %>
       <table class="table">
@@ -31,14 +31,15 @@
       </table>
 
       <div class="row">
-        <%= link_to "いいね一覧", favorites_customer_path(@customer), class: "btn btn-outline-secondary btn-block" %>
-      </div>
-
-　　  <div class="row">
+        <%= link_to "いいね一覧", favorites_customer_path(@customer), class: "btn btn-info btn-block" %>
 　　    <% if current_customer != customer %>
           <td><%= render "public/relationships/btn", customer: customer %></td>
         <% else %>
-          <%= link_to "プロフィールを編集", edit_customer_path(customer.id), class: "btn btn-outline-secondary btn-block" %>
+          <!--ゲストでログインした場合はプロフィール編集を表示させない-->
+          <% if customer.last_name != "guestuser" %>
+            <%= link_to "プロフィールを編集", edit_customer_path(customer.id), class: "btn btn-info btn-block" %>
+          <% end %>
         <% end %>
       </div>
  </div>
+

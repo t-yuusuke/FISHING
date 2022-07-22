@@ -46,9 +46,9 @@ class Customer < ApplicationRecord
     elsif search == "forward_match"
       @customer = Customer.where("last_name LIKE?","#{word}%")
     elsif search == "backward_match"
-      @customer = Customer.where("full_name LIKE?","%#{word}")
+      @customer = Customer.where("first_name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @customer = Customer.where("full_name LIKE?","%#{word}%")
+      @customer = Customer.where("first_name LIKE?","%#{word}%")
     else
       @customer = Customer.all
     end
@@ -69,5 +69,13 @@ class Customer < ApplicationRecord
   end
   profile_image.variant(resize_to_limit: [width, height]).processed
   end
+  #ゲストのメソッドを定義している
+  def self.guest
+    find_or_create_by!(last_name: 'guestuser' ,first_name: 'guestuser' ,last_name_kana: 'guestuser' ,first_name_kana: 'guestuser' ,email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.last_name = "guestuser"
+    end
+  end
+
 
 end
