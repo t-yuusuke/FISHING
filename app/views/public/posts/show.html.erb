@@ -15,33 +15,13 @@
 　　  </div>
 
       <div class="mt-4 mb-4"><%= @post.body %></div>
-      <!--ここからはコメントのテーブル-->
-      <table class="table">
-        <% @post.comments.each do |comment| %>
-          <tr>
-            <td>
-              <%= link_to customer_path(@customer.id) do %>
-              <%= image_tag comment.customer.get_profile_image(50,50), class: "rounded-circle" %><br />
-              <%= comment.customer.full_name %>
-              <% end %>
-            </td>
-            <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= comment.comment %></td>
-            <td>
-              <% if comment.customer == current_customer %>
-              <%= link_to "コメント削除", post_comment_path(comment.post,comment), method: :delete, class: 'btn btn-info rounded-pill' %>
-              <% end %>
-            </td>
-        <% end %>
-          </tr>
-      </table>
-      <!--コメントフォーム-->
-      <div>
-        <%= form_with model: [@post, @comment] do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: 'w-100' %>
-        <%= f.submit "送信する", class: "btn btn-sm btn-info rounded-pill" %>
-        <% end %>
+      <!--コメント機能一覧-->
+      <div class="comments_index">
+        <%= render "public/comments/index", post: @post %>
       </div>
+      <!--コメント機能のフォーム-->
+      <%= render "public/comments/form", post: @post, comment: @comment %>
+      
       <div class="mt-3">
         <% if @post.customer == current_customer %>
           <%= link_to "投稿を削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-info rounded-pill mr-3" %>

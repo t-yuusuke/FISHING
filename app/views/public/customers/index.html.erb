@@ -7,8 +7,10 @@
         <% @customers.each do |customer| %>
         <tbody>
           <tr>
-            <td><%= image_tag customer.get_profile_image(100,100), class: "rounded-circle" %></td>
-            <td><%= customer.full_name %></td>
+            <td class="text-center">
+              <%= image_tag customer.get_profile_image(100,100), class: "rounded-circle" %><br>
+              <%= customer.full_name %>
+            </td>
             <td>フォロー数: <%= customer.followings.count %></td>
             <td>フォロワー数: <%= customer.followers.count %></td>
             <td>

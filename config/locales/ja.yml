@@ -185,25 +185,23 @@ ja:
         customer:
           attributes:
             last_name:
-              blank: "名前(姓)が空白です"
-  activerecord:
-    errors:
-      models:
-        customer:
-          attributes:
+              blank: "姓が空白です。"
             last_name_kana:
-              blank: "名前(セイ)が空白です"
-  activerecord:
-    errors:
-      models:
-        customer:
-          attributes:
+              blank: "セイが空白です。"
             first_name:
-              blank: "名前(名)が空白です"
+              blank: "名が空白です。"
+            first_name_kana:
+              blank: "メイが空白です。"
+            email:
+              blank: "が空白です。"
+            password:
+              blank: "が空白です。"
   activerecord:
     errors:
       models:
-        customer:
+        post:
           attributes:
-            first_name_kana:
-              blank: "名前(メイ)が空白です"
+            title:
+              blank: "が空白です。"
+            body:
+              blank: "が空白です。"

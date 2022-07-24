@@ -2,17 +2,17 @@ class Public::CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    comment = current_customer.comments.new(comment_params)
-    comment.post_id = post.id
-    if comment.save
-    post.create_notification_comment!(current_customer, comment.id)#コメントの通知を作成
-    redirect_to post_path(post)
+    @comment = current_customer.comments.new(comment_params)
+    @comment.post_id = post.id
+    if @comment.save
+    post.create_notification_comment!(current_customer, @comment.id)#コメントの通知を作成
+
     end
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
   end
 
   private

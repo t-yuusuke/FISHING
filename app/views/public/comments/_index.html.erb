@@ -1,0 +1,20 @@
+<!--ここからはコメントのテーブル-->
+      <table class="table table-hover">
+        <% post.comments.each do |comment| %>
+          <tr>
+            <td>
+              <%= link_to customer_path(comment.customer) do %>
+              <%= image_tag comment.customer.get_profile_image(50,50), class: "rounded-circle" %><br />
+              <%= comment.customer.full_name %>
+              <% end %>
+            </td>
+            <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= comment.comment %></td>
+            <td>
+              <% if comment.customer == current_customer %>
+              <%= link_to "コメント削除", post_comment_path(comment.post,comment), method: :delete, class: 'btn btn-info rounded-pill', remote: true %>
+              <% end %>
+            </td>
+        <% end %>
+          </tr>
+      </table>
