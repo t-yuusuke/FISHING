@@ -15,6 +15,9 @@
               <%= link_to "コメント削除", post_comment_path(comment.post,comment), method: :delete, class: 'btn btn-info rounded-pill', remote: true %>
               <% end %>
             </td>
+            <td>
+              <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(comment.created_at) %>前
+            </td>
         <% end %>
           </tr>
       </table>

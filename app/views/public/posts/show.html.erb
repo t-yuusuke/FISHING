@@ -21,7 +21,7 @@
       </div>
       <!--コメント機能のフォーム-->
       <%= render "public/comments/form", post: @post, comment: @comment %>
-      
+
       <div class="mt-3">
         <% if @post.customer == current_customer %>
           <%= link_to "投稿を削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-info rounded-pill mr-3" %>

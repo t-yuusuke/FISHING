@@ -196,9 +196,6 @@ ja:
               blank: "が空白です。"
             password:
               blank: "が空白です。"
-  activerecord:
-    errors:
-      models:
         post:
           attributes:
             title:

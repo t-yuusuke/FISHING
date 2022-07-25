@@ -16,6 +16,9 @@
               <td><%= image_tag @customer.get_profile_image(100,100), class: "rounded-circle" %></td>
               <td><%= link_to post.title, post_path(post.id) %></td>
               <td>コメント件数：<%= post.comments.count %></td>
+              <td>
+                <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(post.created_at) %>前
+            </td>
            <% end %>
             </tr>
           </tbody>
