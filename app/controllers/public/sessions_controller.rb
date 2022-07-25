@@ -8,7 +8,7 @@ class Public::SessionsController < Devise::SessionsController
   end
   #ログアウト後のパスを指定
   def after_sign_out_path_for(resource)
-    root_path
+    top_path
   end
 
   # before_action :configure_sign_in_params, only: [:create]

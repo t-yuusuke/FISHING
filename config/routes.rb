@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 }
 
 scope module: :public do
-  root to: "homes#top"
+  get "top" => "homes#top", as: 'top'
   get "about" => "homes#about", as: 'about'
   get "search" => "searches#search"
   resources :notifications, only: [:index]
