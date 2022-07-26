@@ -48,7 +48,7 @@ class Customer < ApplicationRecord
     elsif search == "backward_match"
       @customer = Customer.where("first_name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @customer = Customer.where("first_name LIKE?","%#{word}%")
+      @customer = Customer.where("last_name LIKE?","%#{word}%")
     else
       @customer = Customer.all
     end
