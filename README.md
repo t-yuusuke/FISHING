@@ -16,8 +16,10 @@
 いつもと違う釣りのスポットに行きたいとき、他の人がどのような場所に行っているのかを知りたい場面で利用する
 
 ## 設計書
-ER図(https://app.diagrams.net/#G1tArsycXloW4JYAIAXFNChWfsgo4ENFRi)<br>
-テーブル定義書(https://docs.google.com/spreadsheets/d/1fdtEIOtnV-JiLZ89nuVQ-Vnrh3ughLQBqDwa_ACwamw/edit#gid=2059322468)
+ER図<br>
+(https://app.diagrams.net/#G1tArsycXloW4JYAIAXFNChWfsgo4ENFRi)
+テーブル定義書<br>
+(https://docs.google.com/spreadsheets/d/1fdtEIOtnV-JiLZ89nuVQ-Vnrh3ughLQBqDwa_ACwamw/edit#gid=2059322468)
 
 ## 開発環境
 - OS：Linux(CentOS)
