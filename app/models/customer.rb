@@ -42,13 +42,13 @@ class Customer < ApplicationRecord
   # 検索方向分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @customer = Customer.where("last_name LIKE?", "#{word}")
+      @customer = Customer.where("last_name||first_name = ?", "#{word}")
     elsif search == "forward_match"
       @customer = Customer.where("last_name LIKE?","#{word}%")
     elsif search == "backward_match"
       @customer = Customer.where("first_name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @customer = Customer.where("last_name LIKE?","%#{word}%")
+      @customer = Customer.where("last_name||first_name LIKE?","%#{word}%")
     else
       @customer = Customer.all
     end
