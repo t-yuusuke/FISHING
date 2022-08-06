@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2 mt-5 border border-secondary shadow-lg p-3 rounded" style="background-color:#D0C1C2;">
-      <h4 class="text-center">いいね一覧</h4>
+      <h4 class="text-center"><%= @customer.full_name %>さんのいいね一覧</h4>
       <table class="table table-hover">
         <% @favorite_posts.each do |post|%>
         <tbody>
           <tr>
             <td><%= image_tag post.customer.get_profile_image(100,100), class: "rounded-circle" %></td>
+            <td><%= post.customer.full_name %></td>
             <td>
-              <%= link_to customer_path(post.customer.id) do %>
-              <%= post.customer.full_name %>
+              <%= link_to post_path(post.id) do %>
+              <%= post.title %>
               <% end %>
             </td>
-            <td><%= post.title %></td>
           </tr>
         <% end %>
         </tbody>
