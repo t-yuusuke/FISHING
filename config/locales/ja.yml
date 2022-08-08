@@ -62,7 +62,7 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
     models:
-      customer: ユーザー
+      customer:
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -178,7 +178,7 @@ ja:
       not_locked: はロックされていません。
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
-        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+        other: "%{count} 件のエラーがあります。修正して再度送信してください。"
   activerecord:
     errors:
       models:

@@ -10,6 +10,12 @@
     <% end %>
     <div class="mt-4 mb-4"><%= @post.body %></div>
     <%= link_to "投稿削除", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-info rounded-pill" %>
-　　</div>
+
+　　<!--コメント機能一覧-->
+    <div class="comment_index">
+      <%= render "admin/posts/index", post: @post %>
+    </div>
+
+    </div>
 　</div>
 </div>
