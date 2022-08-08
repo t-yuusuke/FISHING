@@ -16,9 +16,9 @@
 いつもと違う釣りのスポットに行きたいとき、他の人がどのような場所に行っているのかを知りたい場面で利用する
 
 ## 設計書
-###テーブル定義書
+### テーブル定義書
 https://docs.google.com/spreadsheets/d/1wNmeJTse4FeviU1_fXLZSEiBK3tzAssL/edit?rtpof=true#gid=2072448154
-###ER図
+### ER図
 https://drive.google.com/drive/my-drive
 
 ## 開発環境
