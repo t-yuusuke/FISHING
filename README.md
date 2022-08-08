@@ -17,9 +17,9 @@
 
 ## 設計書
 ### テーブル定義書
-https://docs.google.com/spreadsheets/d/1wNmeJTse4FeviU1_fXLZSEiBK3tzAssL/edit?rtpof=true#gid=2072448154
+https://docs.google.com/spreadsheets/d/1fdtEIOtnV-JiLZ89nuVQ-Vnrh3ughLQBqDwa_ACwamw/edit#gid=490424165
 ### ER図
-https://drive.google.com/drive/my-drive
+https://app.diagrams.net/#G1tArsycXloW4JYAIAXFNChWfsgo4ENFRi
 
 ## 開発環境
 - OS：Linux(CentOS)
